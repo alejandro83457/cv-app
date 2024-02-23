@@ -3,26 +3,33 @@ import { Forms } from './Forms';
 import { Page } from './Page';
 
 function Main() {
-  let contactInfoObj = {
+  let formInfoObj = {
     name: '',
     phone: '',
     email: '',
+    school: '',
+    degree: '',
+    graduationDate: '',
   };
 
-  const [contactInfo, setContactInfo] = useState(contactInfoObj);
+  const [formInfo, setFormInfo] = useState(formInfoObj);
+  const [tempFormInfo, setTempFormInfo] = useState(formInfoObj);
 
-  function handleContactInfo(e) {
-    const propName = e.target.name;
-    setContactInfo({
-      ...contactInfo,
-      [propName]: e.target.value,
-    });
+  function handleFormInfo(e) {
+    setFormInfo({ ...formInfo, [e.target.name]: e.target.value });
+  }
+  function handleSubmitContactInfo(e) {
+    e.preventDefault();
+    setTempFormInfo({ ...formInfo });
   }
 
   return (
     <main>
-      <Forms contactInfo={contactInfo} handleContactInfo={handleContactInfo} />
-      <Page info={contactInfo} />
+      <Forms
+        handleFormInfo={handleFormInfo}
+        handleSubmitFormInfo={handleSubmitContactInfo}
+      />
+      <Page formInfo={tempFormInfo} />
     </main>
   );
 }
