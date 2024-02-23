@@ -1,5 +1,5 @@
 function Page() {
-  return <div>test</div>;
+  return <div id="page">test</div>;
 }
 
 export { Page };

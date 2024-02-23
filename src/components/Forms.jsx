@@ -1,9 +1,12 @@
 import { ContactForm } from './ContactForm';
 
-function Forms() {
+function Forms({ contactInfo, handleContactInfo }) {
   return (
     <div id="forms">
-      <ContactForm />
+      <ContactForm
+        contactInfo={contactInfo}
+        handleContactInfo={handleContactInfo}
+      />
     </div>
   );
 }
