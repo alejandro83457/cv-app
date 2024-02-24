@@ -13,7 +13,7 @@ function Main() {
     graduationDate: '',
   };
 
-  // states; second state lags behind
+  // states; second state is used for our Page component
   const [formInfo, setFormInfo] = useState(formInfoObj);
   const [tempFormInfo, setTempFormInfo] = useState(formInfoObj);
 
@@ -30,8 +30,7 @@ function Main() {
   function handleSubmitContactInfo(e) {
     e.preventDefault(); // prevents page refresh
     setTempFormInfo({ ...formInfo }); // updates page
-    e.target.reset(); // clears inputs
-    setFormInfo(formInfoObj); // TEST
+    setFormInfo(formInfoObj); // 'reset' inputs by setting obj to empty template
   }
 
   return (

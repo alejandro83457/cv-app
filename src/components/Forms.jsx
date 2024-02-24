@@ -18,6 +18,8 @@ function Forms({
       <SchoolForm
         handleFormInfo={handleFormInfo}
         handleSubmitFormInfo={handleSubmitFormInfo}
+        formInfo={formInfo}
+        handleEditFormInfo={handleEditFormInfo}
       />
     </div>
   );
