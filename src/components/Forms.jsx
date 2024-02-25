@@ -1,25 +1,27 @@
 import { ContactForm } from './ContactForm';
 import { SchoolForm } from './SchoolForm';
+import { WorkForm } from './WorkForm';
 
-function Forms({
-  handleFormInfo,
-  handleSubmitFormInfo,
-  formInfo,
-  handleEditFormInfo,
-}) {
+function Forms({ handleForm, handleSubmit, handleEditForm, data }) {
   return (
     <div id="forms">
       <ContactForm
-        handleFormInfo={handleFormInfo}
-        handleSubmitFormInfo={handleSubmitFormInfo}
-        formInfo={formInfo}
-        handleEditFormInfo={handleEditFormInfo}
+        handleForm={handleForm}
+        handleSubmit={handleSubmit}
+        handleEditForm={handleEditForm}
+        data={data}
       />
       <SchoolForm
-        handleFormInfo={handleFormInfo}
-        handleSubmitFormInfo={handleSubmitFormInfo}
-        formInfo={formInfo}
-        handleEditFormInfo={handleEditFormInfo}
+        handleForm={handleForm}
+        handleSubmit={handleSubmit}
+        handleEditForm={handleEditForm}
+        data={data}
+      />
+      <WorkForm
+        handleForm={handleForm}
+        handleSubmit={handleSubmit}
+        handleEditForm={handleEditForm}
+        data={data}
       />
     </div>
   );

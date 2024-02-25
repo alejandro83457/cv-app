@@ -1,11 +1,11 @@
-function SchoolForm({
-  handleFormInfo,
-  handleSubmitFormInfo,
-  formInfo,
-  handleEditFormInfo,
-}) {
+function SchoolForm({ handleForm, handleSubmit, handleEditForm, data }) {
   return (
-    <form id="school-form" onSubmit={handleSubmitFormInfo}>
+    <form
+      id="school-form"
+      onSubmit={(e) => {
+        handleSubmit(e, 'schoolData');
+      }}
+    >
       <h2>School info</h2>
       <div>
         <label htmlFor="school">School:</label>
@@ -13,8 +13,8 @@ function SchoolForm({
           type="text"
           name="school"
           id="school"
-          value={formInfo.school}
-          onChange={handleFormInfo}
+          value={data.schoolData.school}
+          onChange={(e) => handleForm(e, 'schoolData')}
         />
       </div>
       <div>
@@ -23,8 +23,8 @@ function SchoolForm({
           type="text"
           name="degree"
           id="degree"
-          value={formInfo.degree}
-          onChange={handleFormInfo}
+          value={data.schoolData.degree}
+          onChange={(e) => handleForm(e, 'schoolData')}
         />
       </div>
       <div>
@@ -33,12 +33,16 @@ function SchoolForm({
           type="date"
           name="graduationDate"
           id="graduation-date"
-          value={formInfo.graduationDate}
-          onChange={handleFormInfo}
+          value={data.schoolData.graduationDate}
+          onChange={(e) => handleForm(e, 'schoolData')}
         />
       </div>
       <input type="submit" value="add" />
-      <input type="button" value="edit" onClick={handleEditFormInfo} />
+      <input
+        type="button"
+        value="edit"
+        onClick={() => handleEditForm('schoolData')}
+      />
     </form>
   );
 }

@@ -57,6 +57,15 @@ main > * {
   text-align: right;
 }
 
+#education-info-sec > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#work-time {
+  text-align: right;
+}
+
 #forms {
   display: flex;
   flex-direction: column;

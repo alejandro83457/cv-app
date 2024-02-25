@@ -3,45 +3,62 @@ import { Forms } from './Forms';
 import { Page } from './Page';
 
 function Main() {
-  // structure of object
-  let formInfoObj = {
-    name: '',
-    phone: '',
-    email: '',
-    school: '',
-    degree: '',
-    graduationDate: '',
+  let dataObj = {
+    contactData: {
+      name: '',
+      phone: '',
+      email: '',
+    },
+    schoolData: {
+      school: '',
+      degree: '',
+      graduationDate: '',
+    },
+    workData: {
+      companyName: '',
+      positionTitle: '',
+      dateHired: '',
+      dateLeft: '',
+    },
   };
 
   // states; second state is used for our Page component
-  const [formInfo, setFormInfo] = useState(formInfoObj);
-  const [tempFormInfo, setTempFormInfo] = useState(formInfoObj);
+  const [data, setData] = useState(dataObj);
+  const [pageData, setPageData] = useState(dataObj);
 
   // updates states; doesn't update page
-  function handleFormInfo(e) {
-    setFormInfo({ ...formInfo, [e.target.name]: e.target.value });
+  function handleForm(e, category) {
+    setData({
+      ...data,
+      [category]: {
+        ...data[category],
+        [e.target.name]: e.target.value,
+      },
+    });
   }
 
-  function handleEditFormInfo() {
-    setFormInfo({ ...tempFormInfo });
+  // copies what's on the page back on the form for edit
+  function handleEditForm(category) {
+    setData({ ...data, [category]: { ...pageData[category] } });
   }
 
   // updates page after form submittal
-  function handleSubmitContactInfo(e) {
+  function handleSubmit(e, category) {
     e.preventDefault(); // prevents page refresh
-    setTempFormInfo({ ...formInfo }); // updates page
-    setFormInfo(formInfoObj); // 'reset' inputs by setting obj to empty template
+
+    setPageData({ ...pageData, [category]: { ...data[category] } }); // updates page
+    setData(dataObj); // 'reset' inputs by setting obj to empty template
   }
 
   return (
     <main>
       <Forms
-        handleFormInfo={handleFormInfo}
-        handleSubmitFormInfo={handleSubmitContactInfo}
-        formInfo={formInfo}
-        handleEditFormInfo={handleEditFormInfo}
+        handleForm={handleForm}
+        handleSubmit={handleSubmit}
+        handleEditForm={handleEditForm}
+        data={data}
       />
-      <Page formInfo={tempFormInfo} />
+      <Page pageData={pageData} />
     </main>
   );
 }

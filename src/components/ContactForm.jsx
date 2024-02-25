@@ -1,11 +1,11 @@
-function ContactForm({
-  handleFormInfo,
-  handleSubmitFormInfo,
-  handleEditFormInfo,
-  formInfo,
-}) {
+function ContactForm({ handleForm, handleSubmit, handleEditForm, data }) {
   return (
-    <form id="contact-form" onSubmit={handleSubmitFormInfo}>
+    <form
+      id="contact-form"
+      onSubmit={(e) => {
+        handleSubmit(e, 'contactData');
+      }}
+    >
       <h2>Contact Info</h2>
       <div>
         <label htmlFor="name">Name:</label>
@@ -13,8 +13,8 @@ function ContactForm({
           type="text"
           name="name"
           id="name"
-          value={formInfo.name}
-          onChange={handleFormInfo}
+          value={data.contactData.name}
+          onChange={(e) => handleForm(e, 'contactData')}
         />
       </div>
       <div>
@@ -23,8 +23,8 @@ function ContactForm({
           type="tel"
           name="phone"
           id="phone"
-          value={formInfo.phone}
-          onChange={handleFormInfo}
+          value={data.contactData.phone}
+          onChange={(e) => handleForm(e, 'contactData')}
         />
       </div>
       <div>
@@ -33,12 +33,16 @@ function ContactForm({
           type="email"
           name="email"
           id="email"
-          value={formInfo.email}
-          onChange={handleFormInfo}
+          value={data.contactData.email}
+          onChange={(e) => handleForm(e, 'contactData')}
         />
       </div>
       <input type="submit" value="add" />
-      <input type="button" value="edit" onClick={handleEditFormInfo} />
+      <input
+        type="button"
+        value="edit"
+        onClick={() => handleEditForm('contactData')}
+      />
     </form>
   );
 }
