@@ -1,4 +1,4 @@
-function SchoolForm({ handleForm, handleSubmit, handleEditForm, data }) {
+function SchoolForm({ handleForm, handleSubmit, handleEditForm, schoolData }) {
   return (
     <form
       id="school-form"
@@ -13,7 +13,7 @@ function SchoolForm({ handleForm, handleSubmit, handleEditForm, data }) {
           type="text"
           name="school"
           id="school"
-          value={data.schoolData.school}
+          value={schoolData.school}
           onChange={(e) => handleForm(e, 'schoolData')}
         />
       </div>
@@ -23,7 +23,7 @@ function SchoolForm({ handleForm, handleSubmit, handleEditForm, data }) {
           type="text"
           name="degree"
           id="degree"
-          value={data.schoolData.degree}
+          value={schoolData.degree}
           onChange={(e) => handleForm(e, 'schoolData')}
         />
       </div>
@@ -33,7 +33,7 @@ function SchoolForm({ handleForm, handleSubmit, handleEditForm, data }) {
           type="date"
           name="graduationDate"
           id="graduation-date"
-          value={data.schoolData.graduationDate}
+          value={schoolData.graduationDate}
           onChange={(e) => handleForm(e, 'schoolData')}
         />
       </div>

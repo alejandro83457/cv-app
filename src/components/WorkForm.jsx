@@ -1,6 +1,9 @@
-function WorkForm({ handleForm, handleSubmit, handleEditForm, data }) {
+import { Duties } from './Duties';
+
+function WorkForm({ handleForm, handleSubmit, handleEditForm, workData }) {
   return (
     <form
+      id="work-form"
       onSubmit={(e) => {
         handleSubmit(e, 'workData');
       }}
@@ -12,7 +15,7 @@ function WorkForm({ handleForm, handleSubmit, handleEditForm, data }) {
           type="text"
           name="companyName"
           id="companyName"
-          value={data.workData.companyName}
+          value={workData.companyName}
           onChange={(e) => handleForm(e, 'workData')}
         />
       </div>
@@ -22,7 +25,7 @@ function WorkForm({ handleForm, handleSubmit, handleEditForm, data }) {
           type="text"
           name="positionTitle"
           id="positionTitle"
-          value={data.workData.positionTitle}
+          value={workData.positionTitle}
           onChange={(e) => handleForm(e, 'workData')}
         />
       </div>
@@ -32,7 +35,7 @@ function WorkForm({ handleForm, handleSubmit, handleEditForm, data }) {
           type="date"
           name="dateHired"
           id="dateHired"
-          value={data.workData.dateHired}
+          value={workData.dateHired}
           onChange={(e) => handleForm(e, 'workData')}
         />
       </div>
@@ -42,7 +45,7 @@ function WorkForm({ handleForm, handleSubmit, handleEditForm, data }) {
           type="date"
           name="dateLeft"
           id="dateLeft"
-          value={data.workData.dateLeft}
+          value={workData.dateLeft}
           onChange={(e) => handleForm(e, 'workData')}
         />
       </div>

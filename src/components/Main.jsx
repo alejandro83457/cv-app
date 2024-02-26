@@ -3,51 +3,78 @@ import { Forms } from './Forms';
 import { Page } from './Page';
 
 function Main() {
-  let dataObj = {
-    contactData: {
-      name: '',
-      phone: '',
-      email: '',
-    },
-    schoolData: {
-      school: '',
-      degree: '',
-      graduationDate: '',
-    },
-    workData: {
-      companyName: '',
-      positionTitle: '',
-      dateHired: '',
-      dateLeft: '',
-    },
+  let contactDataObj = { name: '', phone: '', email: '' };
+  let schoolDataObj = { school: '', degree: '', graduationDate: '' };
+  let workDataObj = {
+    companyName: '',
+    positionTitle: '',
+    dateHired: '',
+    dateLeft: '',
   };
 
   // states; second state is used for our Page component
-  const [data, setData] = useState(dataObj);
-  const [pageData, setPageData] = useState(dataObj);
+  const [contactData, setContactData] = useState(contactDataObj);
+  const [schoolData, setSchoolData] = useState(schoolDataObj);
+  const [workData, setWorkData] = useState(workDataObj);
+
+  const [pageContactData, setPageContactData] = useState(contactDataObj);
+  const [pageSchoolData, setPageSchoolData] = useState(schoolDataObj);
+  const [pageWorkData, setPageWorkData] = useState(workDataObj);
 
   // updates states; doesn't update page
   function handleForm(e, category) {
-    setData({
-      ...data,
-      [category]: {
-        ...data[category],
-        [e.target.name]: e.target.value,
-      },
-    });
+    switch (category) {
+      case 'contactData':
+        setContactData({ ...contactData, [e.target.name]: e.target.value });
+        break;
+      case 'schoolData':
+        setSchoolData({ ...schoolData, [e.target.name]: e.target.value });
+        break;
+      case 'workData':
+        setWorkData({ ...workData, [e.target.name]: e.target.value });
+        break;
+      default:
+        throw Error('Something went wrong when handling form data.');
+    }
   }
 
   // copies what's on the page back on the form for edit
   function handleEditForm(category) {
-    setData({ ...data, [category]: { ...pageData[category] } });
+    switch (category) {
+      case 'contactData':
+        setContactData(pageContactData);
+        break;
+      case 'schoolData':
+        setSchoolData(pageSchoolData);
+        break;
+      case 'workData':
+        setWorkData(pageWorkData);
+        break;
+      default:
+        throw Error('Something went wrong when editing form.');
+    }
   }
 
   // updates page after form submittal
   function handleSubmit(e, category) {
     e.preventDefault(); // prevents page refresh
 
-    setPageData({ ...pageData, [category]: { ...data[category] } }); // updates page
-    setData(dataObj); // 'reset' inputs by setting obj to empty template
+    switch (category) {
+      case 'contactData':
+        setPageContactData({ ...contactData });
+        setContactData(contactDataObj);
+        break;
+      case 'schoolData':
+        setPageSchoolData({ ...schoolData });
+        setSchoolData(schoolDataObj);
+        break;
+      case 'workData':
+        setPageWorkData({ ...workData });
+        setWorkData(workDataObj);
+        break;
+      default:
+        throw Error('Something went wrong when adding info to page.');
+    }
   }
 
   return (
@@ -56,9 +83,15 @@ function Main() {
         handleForm={handleForm}
         handleSubmit={handleSubmit}
         handleEditForm={handleEditForm}
-        data={data}
+        contactData={contactData}
+        schoolData={schoolData}
+        workData={workData}
       />
-      <Page pageData={pageData} />
+      <Page
+        pageContactData={pageContactData}
+        pageSchoolData={pageSchoolData}
+        pageWorkData={pageWorkData}
+      />
     </main>
   );
 }
