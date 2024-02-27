@@ -1,6 +1,14 @@
 import { Duties } from './Duties';
 
-function WorkForm({ handleForm, handleSubmit, handleEditForm, workData }) {
+function WorkForm({
+  handleForm,
+  handleSubmit,
+  handleEditForm,
+  workData,
+  dutiesData,
+  handleDuty,
+  deleteDuty,
+}) {
   return (
     <form
       id="work-form"
@@ -49,6 +57,11 @@ function WorkForm({ handleForm, handleSubmit, handleEditForm, workData }) {
           onChange={(e) => handleForm(e, 'workData')}
         />
       </div>
+      <Duties
+        dutiesData={dutiesData}
+        handleDuty={handleDuty}
+        deleteDuty={deleteDuty}
+      />
       <input type="submit" value="add" />
       <input
         type="button"

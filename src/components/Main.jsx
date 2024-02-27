@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Forms } from './Forms';
 import { Page } from './Page';
 
@@ -16,10 +17,12 @@ function Main() {
   const [contactData, setContactData] = useState(contactDataObj);
   const [schoolData, setSchoolData] = useState(schoolDataObj);
   const [workData, setWorkData] = useState(workDataObj);
+  const [dutiesData, setDutiesData] = useState({});
 
   const [pageContactData, setPageContactData] = useState(contactDataObj);
   const [pageSchoolData, setPageSchoolData] = useState(schoolDataObj);
   const [pageWorkData, setPageWorkData] = useState(workDataObj);
+  const [pageDutiesData, setPageDutiesData] = useState({});
 
   // updates states; doesn't update page
   function handleForm(e, category) {
@@ -36,6 +39,20 @@ function Main() {
       default:
         throw Error('Something went wrong when handling form data.');
     }
+  }
+
+  // adds/updates duties; adds key if DNE
+  function handleDuty(duty, key = null) {
+    if (key) setDutiesData({ ...dutiesData, [key]: duty });
+    else setDutiesData({ ...dutiesData, [uuidv4()]: duty });
+  }
+
+  function deleteDuty(dutyKey) {
+    let temp = {};
+    Object.entries(dutiesData).forEach(([key, value]) => {
+      if (dutyKey !== key) temp[key] = value;
+    });
+    setDutiesData(temp);
   }
 
   // copies what's on the page back on the form for edit
@@ -86,11 +103,15 @@ function Main() {
         contactData={contactData}
         schoolData={schoolData}
         workData={workData}
+        dutiesData={dutiesData}
+        handleDuty={handleDuty}
+        deleteDuty={deleteDuty}
       />
       <Page
         pageContactData={pageContactData}
         pageSchoolData={pageSchoolData}
         pageWorkData={pageWorkData}
+        pageDutiesData={pageDutiesData}
       />
     </main>
   );

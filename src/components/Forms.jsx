@@ -9,6 +9,9 @@ function Forms({
   contactData,
   schoolData,
   workData,
+  dutiesData,
+  handleDuty,
+  deleteDuty,
 }) {
   return (
     <div id="forms">
@@ -29,6 +32,9 @@ function Forms({
         handleSubmit={handleSubmit}
         handleEditForm={handleEditForm}
         workData={workData}
+        dutiesData={dutiesData}
+        handleDuty={handleDuty}
+        deleteDuty={deleteDuty}
       />
     </div>
   );
