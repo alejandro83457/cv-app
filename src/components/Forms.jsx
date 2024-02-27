@@ -1,5 +1,5 @@
 import { ContactForm } from './ContactForm';
-import { SchoolForm } from './SchoolForm';
+import { Schools } from './Schools';
 import { WorkForm } from './WorkForm';
 
 function Forms({
@@ -7,11 +7,13 @@ function Forms({
   handleSubmit,
   handleEditForm,
   contactData,
-  schoolData,
+  schoolsData,
   workData,
   dutiesData,
   handleDuty,
   deleteDuty,
+  handleNewForm,
+  handleDeleteForm,
 }) {
   return (
     <div id="forms">
@@ -21,11 +23,13 @@ function Forms({
         handleEditForm={handleEditForm}
         contactData={contactData}
       />
-      <SchoolForm
+      <Schools
         handleForm={handleForm}
         handleSubmit={handleSubmit}
         handleEditForm={handleEditForm}
-        schoolData={schoolData}
+        schoolsData={schoolsData}
+        handleNewForm={handleNewForm}
+        handleDeleteForm={handleDeleteForm}
       />
       <WorkForm
         handleForm={handleForm}

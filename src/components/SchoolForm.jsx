@@ -1,12 +1,6 @@
-function SchoolForm({ handleForm, handleSubmit, handleEditForm, schoolData }) {
+function SchoolForm({ handleForm, schoolData, id, handleDeleteForm }) {
   return (
-    <form
-      id="school-form"
-      onSubmit={(e) => {
-        handleSubmit(e, 'schoolData');
-      }}
-    >
-      <h2>School info</h2>
+    <form id="school-form">
       <div>
         <label htmlFor="school">School:</label>
         <input
@@ -14,7 +8,7 @@ function SchoolForm({ handleForm, handleSubmit, handleEditForm, schoolData }) {
           name="school"
           id="school"
           value={schoolData.school}
-          onChange={(e) => handleForm(e, 'schoolData')}
+          onChange={(e) => handleForm(e, 'schoolData', id)}
         />
       </div>
       <div>
@@ -24,7 +18,7 @@ function SchoolForm({ handleForm, handleSubmit, handleEditForm, schoolData }) {
           name="degree"
           id="degree"
           value={schoolData.degree}
-          onChange={(e) => handleForm(e, 'schoolData')}
+          onChange={(e) => handleForm(e, 'schoolData', id)}
         />
       </div>
       <div>
@@ -34,14 +28,13 @@ function SchoolForm({ handleForm, handleSubmit, handleEditForm, schoolData }) {
           name="graduationDate"
           id="graduation-date"
           value={schoolData.graduationDate}
-          onChange={(e) => handleForm(e, 'schoolData')}
+          onChange={(e) => handleForm(e, 'schoolData', id)}
         />
       </div>
-      <input type="submit" value="add" />
       <input
         type="button"
-        value="edit"
-        onClick={() => handleEditForm('schoolData')}
+        value="delete school"
+        onClick={() => handleDeleteForm(id)}
       />
     </form>
   );
