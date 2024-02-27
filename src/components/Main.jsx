@@ -66,6 +66,7 @@ function Main() {
         break;
       case 'workData':
         setWorkData(pageWorkData);
+        setDutiesData(pageDutiesData);
         break;
       default:
         throw Error('Something went wrong when editing form.');
@@ -88,6 +89,9 @@ function Main() {
       case 'workData':
         setPageWorkData({ ...workData });
         setWorkData(workDataObj);
+
+        setPageDutiesData({ ...dutiesData });
+        setDutiesData({});
         break;
       default:
         throw Error('Something went wrong when adding info to page.');

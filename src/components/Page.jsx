@@ -1,4 +1,9 @@
-function Page({ pageContactData, pageSchoolData, pageWorkData }) {
+function Page({
+  pageContactData,
+  pageSchoolData,
+  pageWorkData,
+  pageDutiesData,
+}) {
   return (
     <div id="page">
       <div id="contact-info-sec">
@@ -29,6 +34,12 @@ function Page({ pageContactData, pageSchoolData, pageWorkData }) {
           </div>
           <div id="position">{pageWorkData.positionTitle}</div>
         </div>
+        <h3>Duties</h3>
+        <ul>
+          {Object.entries(pageDutiesData).map(([key, value]) => (
+            <li key={key}>{value}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
