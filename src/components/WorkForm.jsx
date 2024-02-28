@@ -8,6 +8,7 @@ function WorkForm({
   dutiesData,
   handleDuty,
   deleteDuty,
+  id,
 }) {
   return (
     <form
@@ -16,7 +17,6 @@ function WorkForm({
         handleSubmit(e, 'workData');
       }}
     >
-      <h2>Work info</h2>
       <div>
         <label htmlFor="companyName">Company:</label>
         <input
@@ -24,7 +24,7 @@ function WorkForm({
           name="companyName"
           id="companyName"
           value={workData.companyName}
-          onChange={(e) => handleForm(e, 'workData')}
+          onChange={(e) => handleForm(e, 'workData', id)}
         />
       </div>
       <div>
@@ -34,7 +34,7 @@ function WorkForm({
           name="positionTitle"
           id="positionTitle"
           value={workData.positionTitle}
-          onChange={(e) => handleForm(e, 'workData')}
+          onChange={(e) => handleForm(e, 'workData', id)}
         />
       </div>
       <div>
@@ -44,7 +44,7 @@ function WorkForm({
           name="dateHired"
           id="dateHired"
           value={workData.dateHired}
-          onChange={(e) => handleForm(e, 'workData')}
+          onChange={(e) => handleForm(e, 'workData', id)}
         />
       </div>
       <div>
@@ -54,7 +54,7 @@ function WorkForm({
           name="dateLeft"
           id="dateLeft"
           value={workData.dateLeft}
-          onChange={(e) => handleForm(e, 'workData')}
+          onChange={(e) => handleForm(e, 'workData', id)}
         />
       </div>
       <Duties

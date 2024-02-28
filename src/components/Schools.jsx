@@ -23,10 +23,15 @@ function Schools({
       <div>
         <input
           type="button"
+          value="new school"
+          onClick={() => handleNewForm('schoolData')}
+        />
+        <input
+          type="button"
           value="edit school(s)"
           onClick={() => handleEditForm('schoolData')}
         />
-        <input type="button" value="new school" onClick={handleNewForm} />
+
         <input
           type="button"
           value="add school(s)"

@@ -1,7 +1,7 @@
 function Page({
   pageContactData,
   pageSchoolsData,
-  pageWorkData,
+  pageWorksData,
   pageDutiesData,
 }) {
   return (
@@ -28,17 +28,21 @@ function Page({
           ))}
         </div>
       </div>
-      <div id="education-info-sec">
+      <div id="work-info-sec">
         <h2>Work</h2>
         <hr />
-        <div>
-          <div id="company">{pageWorkData.companyName}</div>
-          <div id="work-time">
-            <div>
-              {pageWorkData.dateHired} - {pageWorkData.dateLeft}
+        <div id="works-info">
+          {Object.entries(pageWorksData).map(([key, pageWorkData]) => (
+            <div key={key}>
+              <div id="company">{pageWorkData.companyName}</div>
+              <div id="work-time">
+                <div>
+                  {pageWorkData.dateHired} - {pageWorkData.dateLeft}
+                </div>
+              </div>
+              <div id="position">{pageWorkData.positionTitle}</div>
             </div>
-          </div>
-          <div id="position">{pageWorkData.positionTitle}</div>
+          ))}
         </div>
         <h3>Duties</h3>
         <ul>

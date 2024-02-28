@@ -16,12 +16,12 @@ function Main() {
   // states; second state is used for Page component
   const [contactData, setContactData] = useState(contactDataObj);
   const [schoolsData, setSchoolsData] = useState({ [uuidv4()]: schoolDataObj });
-  const [workData, setWorkData] = useState(workDataObj);
+  const [worksData, setWorksData] = useState({ [uuidv4()]: workDataObj });
   const [dutiesData, setDutiesData] = useState({});
 
   const [pageContactData, setPageContactData] = useState(contactDataObj);
   const [pageSchoolsData, setPageSchoolsData] = useState({});
-  const [pageWorkData, setPageWorkData] = useState(workDataObj);
+  const [pageWorksData, setPageWorksData] = useState({});
   const [pageDutiesData, setPageDutiesData] = useState({});
 
   // updates states; doesn't update page
@@ -37,27 +37,37 @@ function Main() {
         });
         break;
       case 'workData':
-        setWorkData({ ...workData, [e.target.name]: e.target.value });
+        setWorksData({
+          ...worksData,
+          [key]: { ...worksData[key], [e.target.name]: e.target.value },
+        });
         break;
       default:
         throw Error('Something went wrong when handling form data.');
     }
   }
 
-  // creates a new school form
-  function handleNewForm() {
-    setSchoolsData({ ...schoolsData, [uuidv4()]: schoolDataObj });
+  // creates a new form
+  function handleNewForm(category = null) {
+    if (category === 'schoolData') {
+      setSchoolsData({ ...schoolsData, [uuidv4()]: schoolDataObj });
+    } else if (category === 'workData') {
+      setWorksData({ ...worksData, [uuidv4()]: workDataObj });
+    }
   }
 
-  // deletes school form based on key
-  function handleDeleteForm(formKey) {
-    // we need at least one school form present
-    if (Object.keys(schoolsData).length < 2) return;
+  // deletes form based on key
+  function handleDeleteForm(formKey, category = null) {
+    let data = category === 'schoolData' ? schoolsData : worksData;
+    // we need at least one form present
+    if (Object.keys(data).length < 2) return;
     let temp = {};
-    Object.entries(schoolsData).forEach(([key, value]) => {
+    Object.entries(data).forEach(([key, value]) => {
       if (formKey !== key) temp[key] = value;
     });
-    setSchoolsData(temp);
+    // update state
+    if (category === 'schoolData') setSchoolsData(temp);
+    else if (category === 'workData') setWorksData(temp);
   }
 
   // adds/updates duties; adds key if DNE
@@ -85,7 +95,7 @@ function Main() {
         setSchoolsData(pageSchoolsData);
         break;
       case 'workData':
-        setWorkData(pageWorkData);
+        setWorksData(pageWorksData);
         setDutiesData(pageDutiesData);
         break;
       default:
@@ -108,8 +118,9 @@ function Main() {
         setSchoolsData({ [uuidv4()]: schoolDataObj });
         break;
       case 'workData':
-        setPageWorkData({ ...workData });
-        setWorkData(workDataObj);
+        // allows ability to add works after work added to page
+        setPageWorksData({ ...pageWorksData, ...worksData });
+        setWorksData({ [uuidv4()]: workDataObj });
 
         setPageDutiesData({ ...dutiesData });
         setDutiesData({});
@@ -127,7 +138,7 @@ function Main() {
         handleEditForm={handleEditForm}
         contactData={contactData}
         schoolsData={schoolsData}
-        workData={workData}
+        worksData={worksData}
         dutiesData={dutiesData}
         handleDuty={handleDuty}
         deleteDuty={deleteDuty}
@@ -137,7 +148,7 @@ function Main() {
       <Page
         pageContactData={pageContactData}
         pageSchoolsData={pageSchoolsData}
-        pageWorkData={pageWorkData}
+        pageWorksData={pageWorksData}
         pageDutiesData={pageDutiesData}
       />
     </main>

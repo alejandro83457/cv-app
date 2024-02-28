@@ -1,6 +1,6 @@
 import { ContactForm } from './ContactForm';
 import { Schools } from './Schools';
-import { WorkForm } from './WorkForm';
+import { Works } from './Works';
 
 function Forms({
   handleForm,
@@ -8,7 +8,7 @@ function Forms({
   handleEditForm,
   contactData,
   schoolsData,
-  workData,
+  worksData,
   dutiesData,
   handleDuty,
   deleteDuty,
@@ -31,11 +31,13 @@ function Forms({
         handleNewForm={handleNewForm}
         handleDeleteForm={handleDeleteForm}
       />
-      <WorkForm
+      <Works
+        worksData={worksData}
         handleForm={handleForm}
         handleSubmit={handleSubmit}
         handleEditForm={handleEditForm}
-        workData={workData}
+        handleNewForm={handleNewForm}
+        handleDeleteForm={handleDeleteForm}
         dutiesData={dutiesData}
         handleDuty={handleDuty}
         deleteDuty={deleteDuty}

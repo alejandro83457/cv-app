@@ -34,7 +34,7 @@ function SchoolForm({ handleForm, schoolData, id, handleDeleteForm }) {
       <input
         type="button"
         value="delete school"
-        onClick={() => handleDeleteForm(id)}
+        onClick={() => handleDeleteForm(id, 'schoolData')}
       />
     </form>
   );
