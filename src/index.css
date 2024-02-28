@@ -70,7 +70,7 @@ main > * {
   text-align: right;
 }
 
-#work-info-sec > div > div {
+#work-info-sec > div > div > div {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -95,6 +95,10 @@ main > * {
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
+}
+
+ul {
+  margin: 0;
 }
 
 footer {

@@ -7,8 +7,8 @@ function Works({
   handleEditForm,
   handleNewForm,
   handleDeleteForm,
-  dutiesData,
-  handleDuty,
+  addDuty,
+  updateDuty,
   deleteDuty,
 }) {
   return (
@@ -21,8 +21,8 @@ function Works({
           handleForm={handleForm}
           workData={value}
           handleDeleteForm={handleDeleteForm}
-          handleDuty={handleDuty}
-          dutiesData={dutiesData}
+          addDuty={addDuty}
+          updateDuty={updateDuty}
           deleteDuty={deleteDuty}
         />
       ))}

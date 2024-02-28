@@ -11,18 +11,19 @@ function Main() {
     positionTitle: '',
     dateHired: '',
     dateLeft: '',
+    dutiesData: {},
   };
 
   // states; second state is used for Page component
   const [contactData, setContactData] = useState(contactDataObj);
   const [schoolsData, setSchoolsData] = useState({ [uuidv4()]: schoolDataObj });
-  const [worksData, setWorksData] = useState({ [uuidv4()]: workDataObj });
-  const [dutiesData, setDutiesData] = useState({});
+  const [worksData, setWorksData] = useState({
+    [uuidv4()]: { ...workDataObj, dutiesData: { [uuidv4()]: '' } },
+  });
 
   const [pageContactData, setPageContactData] = useState(contactDataObj);
   const [pageSchoolsData, setPageSchoolsData] = useState({});
   const [pageWorksData, setPageWorksData] = useState({});
-  const [pageDutiesData, setPageDutiesData] = useState({});
 
   // updates states; doesn't update page
   function handleForm(e, category, key = null) {
@@ -52,7 +53,10 @@ function Main() {
     if (category === 'schoolData') {
       setSchoolsData({ ...schoolsData, [uuidv4()]: schoolDataObj });
     } else if (category === 'workData') {
-      setWorksData({ ...worksData, [uuidv4()]: workDataObj });
+      setWorksData({
+        ...worksData,
+        [uuidv4()]: { ...workDataObj, dutiesData: { [uuidv4()]: '' } },
+      });
     }
   }
 
@@ -70,19 +74,48 @@ function Main() {
     else if (category === 'workData') setWorksData(temp);
   }
 
-  // adds/updates duties; adds key if DNE
-  function handleDuty(duty, key = null) {
-    if (key) setDutiesData({ ...dutiesData, [key]: duty });
-    else setDutiesData({ ...dutiesData, [uuidv4()]: duty });
+  // adds a new duty
+  function addDuty(workKey) {
+    setWorksData({
+      ...worksData,
+      [workKey]: {
+        ...worksData[workKey],
+        dutiesData: {
+          ...worksData[workKey].dutiesData,
+          [uuidv4()]: '',
+        },
+      },
+    });
   }
 
-  // deletes duty specified from dutiesData state
-  function deleteDuty(dutyKey) {
+  // udpates duty; duty handler
+  function updateDuty(e, workKey, dutyKey) {
+    setWorksData({
+      ...worksData,
+      [workKey]: {
+        ...worksData[workKey],
+        dutiesData: {
+          ...worksData[workKey].dutiesData,
+          [dutyKey]: e,
+        },
+      },
+    });
+  }
+
+  // deletes duty; check if we have at least one duty on screen
+  function deleteDuty(workKey, dutyKey) {
+    if (Object.keys(worksData[workKey].dutiesData).length < 2) return;
     let temp = {};
-    Object.entries(dutiesData).forEach(([key, value]) => {
+    Object.entries(worksData[workKey].dutiesData).map(([key, value]) => {
       if (dutyKey !== key) temp[key] = value;
     });
-    setDutiesData(temp);
+    setWorksData({
+      ...worksData,
+      [workKey]: {
+        ...worksData[workKey],
+        dutiesData: temp,
+      },
+    });
   }
 
   // copies what's on the page back on the form for edit
@@ -96,7 +129,6 @@ function Main() {
         break;
       case 'workData':
         setWorksData(pageWorksData);
-        setDutiesData(pageDutiesData);
         break;
       default:
         throw Error('Something went wrong when editing form.');
@@ -120,10 +152,10 @@ function Main() {
       case 'workData':
         // allows ability to add works after work added to page
         setPageWorksData({ ...pageWorksData, ...worksData });
-        setWorksData({ [uuidv4()]: workDataObj });
-
-        setPageDutiesData({ ...dutiesData });
-        setDutiesData({});
+        // setWorksData({ [uuidv4()]: workDataObj });
+        setWorksData({
+          [uuidv4()]: { ...workDataObj, dutiesData: { [uuidv4()]: '' } },
+        });
         break;
       default:
         throw Error('Something went wrong when adding info to page.');
@@ -139,8 +171,8 @@ function Main() {
         contactData={contactData}
         schoolsData={schoolsData}
         worksData={worksData}
-        dutiesData={dutiesData}
-        handleDuty={handleDuty}
+        addDuty={addDuty}
+        updateDuty={updateDuty}
         deleteDuty={deleteDuty}
         handleNewForm={handleNewForm}
         handleDeleteForm={handleDeleteForm}
@@ -149,7 +181,6 @@ function Main() {
         pageContactData={pageContactData}
         pageSchoolsData={pageSchoolsData}
         pageWorksData={pageWorksData}
-        pageDutiesData={pageDutiesData}
       />
     </main>
   );

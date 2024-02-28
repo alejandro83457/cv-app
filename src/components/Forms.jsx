@@ -9,8 +9,8 @@ function Forms({
   contactData,
   schoolsData,
   worksData,
-  dutiesData,
-  handleDuty,
+  addDuty,
+  updateDuty,
   deleteDuty,
   handleNewForm,
   handleDeleteForm,
@@ -38,8 +38,8 @@ function Forms({
         handleEditForm={handleEditForm}
         handleNewForm={handleNewForm}
         handleDeleteForm={handleDeleteForm}
-        dutiesData={dutiesData}
-        handleDuty={handleDuty}
+        addDuty={addDuty}
+        updateDuty={updateDuty}
         deleteDuty={deleteDuty}
       />
     </div>

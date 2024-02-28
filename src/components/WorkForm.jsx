@@ -3,10 +3,9 @@ import { Duties } from './Duties';
 function WorkForm({
   handleForm,
   handleSubmit,
-  handleEditForm,
   workData,
-  dutiesData,
-  handleDuty,
+  addDuty,
+  updateDuty,
   deleteDuty,
   id,
 }) {
@@ -58,15 +57,11 @@ function WorkForm({
         />
       </div>
       <Duties
-        dutiesData={dutiesData}
-        handleDuty={handleDuty}
+        workID={id}
+        addDuty={addDuty}
+        updateDuty={updateDuty}
         deleteDuty={deleteDuty}
-      />
-      <input type="submit" value="add" />
-      <input
-        type="button"
-        value="edit"
-        onClick={() => handleEditForm('workData')}
+        workData={workData}
       />
     </form>
   );

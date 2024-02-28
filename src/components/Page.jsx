@@ -1,9 +1,4 @@
-function Page({
-  pageContactData,
-  pageSchoolsData,
-  pageWorksData,
-  pageDutiesData,
-}) {
+function Page({ pageContactData, pageSchoolsData, pageWorksData }) {
   return (
     <div id="page">
       <div id="contact-info-sec">
@@ -23,7 +18,9 @@ function Page({
               <div className="graduation-date">
                 {pageSchoolData.graduationDate}
               </div>
-              <div className="degree">{pageSchoolData.degree}</div>
+              <div className="degree">
+                <i>{pageSchoolData.degree}</i>
+              </div>
             </div>
           ))}
         </div>
@@ -34,22 +31,28 @@ function Page({
         <div id="works-info">
           {Object.entries(pageWorksData).map(([key, pageWorkData]) => (
             <div key={key}>
-              <div id="company">{pageWorkData.companyName}</div>
-              <div id="work-time">
-                <div>
-                  {pageWorkData.dateHired} - {pageWorkData.dateLeft}
+              <div>
+                <div id="company">
+                  <b>{pageWorkData.companyName}</b>
+                </div>
+                <div id="work-time">
+                  <div>
+                    {pageWorkData.dateHired} - {pageWorkData.dateLeft}
+                  </div>
+                </div>
+                <div id="position">
+                  <i>{pageWorkData.positionTitle}</i>
                 </div>
               </div>
-              <div id="position">{pageWorkData.positionTitle}</div>
+              <div>Duties:</div>
+              <ul>
+                {Object.entries(pageWorkData.dutiesData).map(([key, value]) => (
+                  <li key={key}>{value}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
-        <h3>Duties</h3>
-        <ul>
-          {Object.entries(pageDutiesData).map(([key, value]) => (
-            <li key={key}>{value}</li>
-          ))}
-        </ul>
       </div>
     </div>
   );

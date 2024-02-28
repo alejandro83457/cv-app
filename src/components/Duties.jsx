@@ -1,21 +1,22 @@
-import { useState } from 'react';
-
-function Duty({ duty, handleDuty, deleteDuty, id }) {
+function Duty({ duty, deleteDuty, updateDuty, id, workID }) {
   return (
     <div className="duty">
       <input
         type="text"
         value={duty}
-        onChange={(e) => handleDuty(e.target.value, id)}
+        onChange={(e) => updateDuty(e.target.value, workID, id)}
       />
-      <input type="button" value="delete" onClick={() => deleteDuty(id)} />
+      <input
+        type="button"
+        value="delete"
+        onClick={() => deleteDuty(workID, id)}
+      />
     </div>
   );
 }
 
-function Duties({ dutiesData, handleDuty, deleteDuty }) {
-  const [dutyState, setDutyState] = useState('');
-
+function Duties({ addDuty, updateDuty, deleteDuty, workID, workData }) {
+  let dutiesData = workData.dutiesData;
   return (
     <div id="duties">
       <div>Duties:</div>
@@ -24,24 +25,12 @@ function Duties({ dutiesData, handleDuty, deleteDuty }) {
           duty={value}
           key={key}
           id={key}
-          handleDuty={handleDuty}
+          workID={workID}
           deleteDuty={deleteDuty}
+          updateDuty={updateDuty}
         />
       ))}
-      <input
-        type="text"
-        id="dutyID"
-        value={dutyState}
-        onChange={(e) => setDutyState(e.target.value)}
-      />
-      <input
-        type="button"
-        value="add"
-        onClick={() => {
-          handleDuty(dutyState);
-          setDutyState('');
-        }}
-      />
+      <input type="button" value="new duty" onClick={() => addDuty(workID)} />
     </div>
   );
 }
