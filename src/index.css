@@ -11,6 +11,8 @@ body {
   height: 100dvh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 header {
@@ -19,12 +21,10 @@ header {
 }
 
 main {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
   gap: 1rem;
-}
-
-main > * {
-  flex: 1;
+  width: 850px;
 }
 
 #schools-form,
@@ -38,6 +38,7 @@ main > * {
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 }
 
 #contact-info-sec > h2 {
@@ -95,14 +96,42 @@ main > * {
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 }
 
 ul {
   margin: 0;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 footer {
-  margin-top: auto;
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 900px) {
+  #root {
+    height: auto;
+  }
+  main {
+    grid-template-columns: 1fr;
+    width: 600px;
+  }
+  #page {
+    min-height: 850px;
+  }
+}
+
+@media (max-width: 650px) {
+  main {
+    width: 400px;
+  }
+  #page {
+    min-height: 600px;
+  }
 }
