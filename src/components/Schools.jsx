@@ -7,6 +7,7 @@ function Schools({
   handleEditForm,
   handleNewForm,
   handleDeleteForm,
+  emptySchoolsFlag,
 }) {
   return (
     <div id="schools-form">
@@ -18,6 +19,7 @@ function Schools({
           handleForm={handleForm}
           schoolData={value}
           handleDeleteForm={handleDeleteForm}
+          emptySchoolsFlag={emptySchoolsFlag}
         />
       ))}
       <div>

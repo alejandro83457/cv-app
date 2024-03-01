@@ -27,8 +27,8 @@ function Main() {
 
   // state flag for empty inputs
   const [emptyContactFlag, setEmptyContactFlag] = useState(false);
-  const [emptySchoolFlag, setEmptySchoolFlag] = useState(false);
-  const [emptyWorkFlag, setEmptyWorkFlag] = useState(false);
+  const [emptySchoolsFlag, setEmptySchoolsFlag] = useState(false);
+  const [emptyWorksFlag, setEmptyWorksFlag] = useState(false);
 
   // updates states; doesn't update page
   function handleForm(e, category, key = null) {
@@ -128,9 +128,11 @@ function Main() {
     switch (category) {
       case 'contactData':
         setContactData(pageContactData);
+        setEmptyContactFlag(false);
         break;
       case 'schoolData':
         setSchoolsData(pageSchoolsData);
+        setEmptySchoolsFlag(false);
         break;
       case 'workData':
         setWorksData(pageWorksData);
@@ -146,19 +148,20 @@ function Main() {
 
     switch (category) {
       case 'contactData':
+        // check if any input is empty
         if (!checkForms(category)) return;
         setPageContactData({ ...contactData });
         setContactData(contactDataObj);
         break;
       case 'schoolData':
+        // check if any input is empty
+        if (!checkForms(category)) return;
         // allows the ability to add schools after school added to page
-        // setPageSchoolsData({ ...pageSchoolsData, ...schoolsData });
         setPageSchoolsData({ ...schoolsData });
         setSchoolsData({ [uuidv4()]: schoolDataObj });
         break;
       case 'workData':
         // allows ability to add works after work added to page
-        // setPageWorksData({ ...pageWorksData, ...worksData });
         setPageWorksData({ ...worksData });
         setWorksData({
           [uuidv4()]: { ...workDataObj, dutiesData: { [uuidv4()]: '' } },
@@ -183,6 +186,21 @@ function Main() {
           setEmptyContactFlag(false);
           return true;
         }
+      case 'schoolData':
+        // NOTE: using 'map' did not allow me to call
+        // setEmptySchoolsFlag and change the state
+        for (let [key, schoolData] of Object.entries(schoolsData)) {
+          if (
+            schoolData.school === '' ||
+            schoolData.degree === '' ||
+            schoolData.graduationDate === ''
+          ) {
+            setEmptySchoolsFlag(true);
+            return false;
+          }
+        }
+        setEmptySchoolsFlag(false);
+        return true;
     }
   }
 
@@ -201,6 +219,7 @@ function Main() {
         handleNewForm={handleNewForm}
         handleDeleteForm={handleDeleteForm}
         emptyContactFlag={emptyContactFlag}
+        emptySchoolsFlag={emptySchoolsFlag}
       />
       <Page
         pageContactData={pageContactData}
