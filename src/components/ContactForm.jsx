@@ -3,6 +3,7 @@ function ContactForm({
   handleSubmit,
   handleEditForm,
   contactData,
+  emptyContactFlag,
 }) {
   return (
     <form
@@ -12,7 +13,7 @@ function ContactForm({
       }}
     >
       <h2>Contact Info</h2>
-      <div>
+      <div className="inputDiv">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -21,8 +22,11 @@ function ContactForm({
           value={contactData.name}
           onChange={(e) => handleForm(e, 'contactData')}
         />
+        {emptyContactFlag && contactData.name === '' && (
+          <div id="asterisk">*</div>
+        )}
       </div>
-      <div>
+      <div className="inputDiv">
         <label htmlFor="phone">Phone:</label>
         <input
           type="tel"
@@ -31,8 +35,11 @@ function ContactForm({
           value={contactData.phone}
           onChange={(e) => handleForm(e, 'contactData')}
         />
+        {emptyContactFlag && contactData.phone === '' && (
+          <div id="asterisk">*</div>
+        )}
       </div>
-      <div>
+      <div className="inputDiv">
         <label htmlFor="email">Email:</label>
         <input
           type="email"
@@ -41,6 +48,9 @@ function ContactForm({
           value={contactData.email}
           onChange={(e) => handleForm(e, 'contactData')}
         />
+        {emptyContactFlag && contactData.email === '' && (
+          <div id="asterisk">*</div>
+        )}
       </div>
       <input type="submit" value="add" />
       <input

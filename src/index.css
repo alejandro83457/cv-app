@@ -109,6 +109,15 @@ form {
   gap: 0.5rem;
 }
 
+.inputDiv {
+  display: flex;
+  gap: 0.25rem;
+}
+
+#asterisk {
+  color: darkred;
+}
+
 footer {
   display: flex;
   justify-content: center;

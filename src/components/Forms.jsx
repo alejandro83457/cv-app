@@ -14,6 +14,7 @@ function Forms({
   deleteDuty,
   handleNewForm,
   handleDeleteForm,
+  emptyContactFlag,
 }) {
   return (
     <div id="forms">
@@ -22,6 +23,7 @@ function Forms({
         handleSubmit={handleSubmit}
         handleEditForm={handleEditForm}
         contactData={contactData}
+        emptyContactFlag={emptyContactFlag}
       />
       <Schools
         handleForm={handleForm}

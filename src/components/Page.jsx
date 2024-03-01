@@ -14,7 +14,9 @@ function Page({ pageContactData, pageSchoolsData, pageWorksData }) {
         <div id="schools-info">
           {Object.entries(pageSchoolsData).map(([key, pageSchoolData]) => (
             <div key={key}>
-              <div className="school">{pageSchoolData.school}</div>
+              <div className="school">
+                <b>{pageSchoolData.school}</b>
+              </div>
               <div className="graduation-date">
                 {pageSchoolData.graduationDate}
               </div>

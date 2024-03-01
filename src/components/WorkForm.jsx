@@ -3,6 +3,7 @@ import { Duties } from './Duties';
 function WorkForm({
   handleForm,
   handleSubmit,
+  handleDeleteForm,
   workData,
   addDuty,
   updateDuty,
@@ -62,6 +63,11 @@ function WorkForm({
         updateDuty={updateDuty}
         deleteDuty={deleteDuty}
         workData={workData}
+      />
+      <input
+        type="button"
+        value="delete work"
+        onClick={() => handleDeleteForm(id, 'workData')}
       />
     </form>
   );

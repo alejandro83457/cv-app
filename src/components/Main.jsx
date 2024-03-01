@@ -25,6 +25,11 @@ function Main() {
   const [pageSchoolsData, setPageSchoolsData] = useState({});
   const [pageWorksData, setPageWorksData] = useState({});
 
+  // state flag for empty inputs
+  const [emptyContactFlag, setEmptyContactFlag] = useState(false);
+  const [emptySchoolFlag, setEmptySchoolFlag] = useState(false);
+  const [emptyWorkFlag, setEmptyWorkFlag] = useState(false);
+
   // updates states; doesn't update page
   function handleForm(e, category, key = null) {
     switch (category) {
@@ -141,24 +146,43 @@ function Main() {
 
     switch (category) {
       case 'contactData':
+        if (!checkForms(category)) return;
         setPageContactData({ ...contactData });
         setContactData(contactDataObj);
         break;
       case 'schoolData':
         // allows the ability to add schools after school added to page
-        setPageSchoolsData({ ...pageSchoolsData, ...schoolsData });
+        // setPageSchoolsData({ ...pageSchoolsData, ...schoolsData });
+        setPageSchoolsData({ ...schoolsData });
         setSchoolsData({ [uuidv4()]: schoolDataObj });
         break;
       case 'workData':
         // allows ability to add works after work added to page
-        setPageWorksData({ ...pageWorksData, ...worksData });
-        // setWorksData({ [uuidv4()]: workDataObj });
+        // setPageWorksData({ ...pageWorksData, ...worksData });
+        setPageWorksData({ ...worksData });
         setWorksData({
           [uuidv4()]: { ...workDataObj, dutiesData: { [uuidv4()]: '' } },
         });
         break;
       default:
         throw Error('Something went wrong when adding info to page.');
+    }
+  }
+
+  function checkForms(category) {
+    switch (category) {
+      case 'contactData':
+        if (
+          contactData.name === '' ||
+          contactData.phone === '' ||
+          contactData.email === ''
+        ) {
+          setEmptyContactFlag(true);
+          return false;
+        } else {
+          setEmptyContactFlag(false);
+          return true;
+        }
     }
   }
 
@@ -176,6 +200,7 @@ function Main() {
         deleteDuty={deleteDuty}
         handleNewForm={handleNewForm}
         handleDeleteForm={handleDeleteForm}
+        emptyContactFlag={emptyContactFlag}
       />
       <Page
         pageContactData={pageContactData}
