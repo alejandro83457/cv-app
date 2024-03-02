@@ -22,23 +22,25 @@ function Schools({
           emptySchoolsFlag={emptySchoolsFlag}
         />
       ))}
-      <div>
+      <div className="options">
         <input
           type="button"
-          value="new school"
+          value="new"
           onClick={() => handleNewForm('schoolData')}
         />
         <input
           type="button"
-          value="edit school(s)"
+          value="edit"
           onClick={() => handleEditForm('schoolData')}
         />
-
         <input
           type="button"
-          value="add school(s)"
+          value="add"
           onClick={(e) => handleSubmit(e, 'schoolData')}
         />
+      </div>
+      <div className="errorMessage">
+        {emptySchoolsFlag && '* Fill out all fields'}
       </div>
     </div>
   );

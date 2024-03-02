@@ -52,12 +52,17 @@ function ContactForm({
           <div id="asterisk">*</div>
         )}
       </div>
-      <input type="submit" value="add" />
-      <input
-        type="button"
-        value="edit"
-        onClick={() => handleEditForm('contactData')}
-      />
+      <div className="options">
+        <input
+          type="button"
+          value="edit"
+          onClick={() => handleEditForm('contactData')}
+        />
+        <input type="submit" value="add" />
+      </div>
+      <div className="errorMessage">
+        {emptyContactFlag && '* Fill out all fields'}
+      </div>
     </form>
   );
 }

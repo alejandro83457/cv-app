@@ -28,23 +28,25 @@ function Works({
           emptyWorksFlag={emptyWorksFlag}
         />
       ))}
-      <div>
+      <div className="options">
         <input
           type="button"
-          value="new work"
+          value="new"
           onClick={() => handleNewForm('workData')}
         />
         <input
           type="button"
-          value="edit work(s)"
+          value="edit"
           onClick={() => handleEditForm('workData')}
         />
-
         <input
           type="button"
-          value="add work(s)"
+          value="add"
           onClick={(e) => handleSubmit(e, 'workData')}
         />
+      </div>
+      <div className="errorMessage">
+        {emptyWorksFlag && '* Fill out all fields'}
       </div>
     </div>
   );

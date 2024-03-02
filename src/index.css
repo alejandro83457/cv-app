@@ -118,6 +118,16 @@ form {
   color: darkred;
 }
 
+.errorMessage {
+  height: 8px;
+  color: darkred;
+}
+
+.options {
+  display: flex;
+  gap: 0.5rem;
+}
+
 footer {
   display: flex;
   justify-content: center;
