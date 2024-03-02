@@ -14,7 +14,7 @@ function Works({
 }) {
   return (
     <div id="works-form">
-      <h2>Work info</h2>
+      <h2 className="formHeading">Work info</h2>
       {Object.entries(worksData).map(([key, value]) => (
         <WorkForm
           key={key}

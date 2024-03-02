@@ -11,7 +11,7 @@ function Schools({
 }) {
   return (
     <div id="schools-form">
-      <h2>School info</h2>
+      <h2 className="formHeading">School info</h2>
       {Object.entries(schoolsData).map(([key, value]) => (
         <SchoolForm
           key={key}

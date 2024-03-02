@@ -12,7 +12,7 @@ function ContactForm({
         handleSubmit(e, 'contactData');
       }}
     >
-      <h2>Contact Info</h2>
+      <h2 className="formHeading">Contact Info</h2>
       <div className="inputDiv">
         <label htmlFor="name">Name:</label>
         <input
