@@ -136,6 +136,7 @@ function Main() {
         break;
       case 'workData':
         setWorksData(pageWorksData);
+        setEmptySchoolsFlag(false);
         break;
       default:
         throw Error('Something went wrong when editing form.');
@@ -161,6 +162,8 @@ function Main() {
         setSchoolsData({ [uuidv4()]: schoolDataObj });
         break;
       case 'workData':
+        // check if any input is empty
+        if (!checkForms(category)) return;
         // allows ability to add works after work added to page
         setPageWorksData({ ...worksData });
         setWorksData({
@@ -172,6 +175,7 @@ function Main() {
     }
   }
 
+  // checks if forms are empty or not
   function checkForms(category) {
     switch (category) {
       case 'contactData':
@@ -201,6 +205,20 @@ function Main() {
         }
         setEmptySchoolsFlag(false);
         return true;
+      case 'workData':
+        for (let [key, workData] of Object.entries(worksData)) {
+          if (
+            workData.companyName === '' ||
+            workData.positionTitle === '' ||
+            workData.dateHired === '' ||
+            workData.dateLeft === ''
+          ) {
+            setEmptyWorksFlag(true);
+            return false;
+          }
+        }
+        setEmptyWorksFlag(false);
+        return true;
     }
   }
 
@@ -220,6 +238,7 @@ function Main() {
         handleDeleteForm={handleDeleteForm}
         emptyContactFlag={emptyContactFlag}
         emptySchoolsFlag={emptySchoolsFlag}
+        emptyWorksFlag={emptyWorksFlag}
       />
       <Page
         pageContactData={pageContactData}

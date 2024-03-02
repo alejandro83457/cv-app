@@ -16,6 +16,7 @@ function Forms({
   handleDeleteForm,
   emptyContactFlag,
   emptySchoolsFlag,
+  emptyWorksFlag,
 }) {
   return (
     <div id="forms">
@@ -45,6 +46,7 @@ function Forms({
         addDuty={addDuty}
         updateDuty={updateDuty}
         deleteDuty={deleteDuty}
+        emptyWorksFlag={emptyWorksFlag}
       />
     </div>
   );

@@ -9,6 +9,7 @@ function WorkForm({
   updateDuty,
   deleteDuty,
   id,
+  emptyWorksFlag,
 }) {
   return (
     <form
@@ -17,7 +18,7 @@ function WorkForm({
         handleSubmit(e, 'workData');
       }}
     >
-      <div>
+      <div className="inputDiv">
         <label htmlFor="companyName">Company:</label>
         <input
           type="text"
@@ -26,8 +27,11 @@ function WorkForm({
           value={workData.companyName}
           onChange={(e) => handleForm(e, 'workData', id)}
         />
+        {emptyWorksFlag && workData.companyName === '' && (
+          <div id="asterisk">*</div>
+        )}
       </div>
-      <div>
+      <div className="inputDiv">
         <label htmlFor="positionTitle">Position:</label>
         <input
           type="text"
@@ -36,8 +40,11 @@ function WorkForm({
           value={workData.positionTitle}
           onChange={(e) => handleForm(e, 'workData', id)}
         />
+        {emptyWorksFlag && workData.positionTitle === '' && (
+          <div id="asterisk">*</div>
+        )}
       </div>
-      <div>
+      <div className="inputDiv">
         <label htmlFor="dateHired">From:</label>
         <input
           type="date"
@@ -46,8 +53,11 @@ function WorkForm({
           value={workData.dateHired}
           onChange={(e) => handleForm(e, 'workData', id)}
         />
+        {emptyWorksFlag && workData.dateHired === '' && (
+          <div id="asterisk">*</div>
+        )}
       </div>
-      <div>
+      <div className="inputDiv">
         <label htmlFor="dateLeft">To:</label>
         <input
           type="date"
@@ -56,6 +66,9 @@ function WorkForm({
           value={workData.dateLeft}
           onChange={(e) => handleForm(e, 'workData', id)}
         />
+        {emptyWorksFlag && workData.dateLeft === '' && (
+          <div id="asterisk">*</div>
+        )}
       </div>
       <Duties
         workID={id}

@@ -10,6 +10,7 @@ function Works({
   addDuty,
   updateDuty,
   deleteDuty,
+  emptyWorksFlag,
 }) {
   return (
     <div id="works-form">
@@ -24,6 +25,7 @@ function Works({
           addDuty={addDuty}
           updateDuty={updateDuty}
           deleteDuty={deleteDuty}
+          emptyWorksFlag={emptyWorksFlag}
         />
       ))}
       <div>
