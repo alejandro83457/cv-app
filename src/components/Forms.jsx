@@ -1,6 +1,7 @@
 import { ContactForm } from './ContactForm';
 import { Schools } from './Schools';
 import { Works } from './Works';
+import { SkillsForm } from './SkillsForm';
 
 function Forms({
   handleForm,
@@ -9,6 +10,7 @@ function Forms({
   contactData,
   schoolsData,
   worksData,
+  skillsData,
   addDuty,
   updateDuty,
   deleteDuty,
@@ -47,6 +49,14 @@ function Forms({
         updateDuty={updateDuty}
         deleteDuty={deleteDuty}
         emptyWorksFlag={emptyWorksFlag}
+      />
+      <SkillsForm
+        skillsData={skillsData}
+        handleForm={handleForm}
+        handleSubmit={handleSubmit}
+        handleEditForm={handleEditForm}
+        handleNewForm={handleNewForm}
+        handleDeleteForm={handleDeleteForm}
       />
     </div>
   );

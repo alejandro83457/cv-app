@@ -82,8 +82,8 @@ function Main() {
   function handleDeleteForm(formKey, category = null) {
     let data;
     if (category === 'schoolData') data = schoolsData;
-    else if (category === 'worksData') data = worksData;
-    else if (category === 'skillsData') data = skillsData;
+    else if (category === 'workData') data = worksData;
+    else if (category === 'skillData') data = skillsData;
     // OLD
     // let data = category === 'schoolData' ? schoolsData : worksData;
     // we need at least one form present
@@ -95,7 +95,7 @@ function Main() {
     // update state
     if (category === 'schoolData') setSchoolsData(temp);
     else if (category === 'workData') setWorksData(temp);
-    else if (category === 'skillsData') setSkillsData(temp);
+    else if (category === 'skillData') setSkillsData(temp);
   }
 
   // adds a new duty
@@ -157,7 +157,7 @@ function Main() {
         setWorksData(pageWorksData);
         setEmptySchoolsFlag(false);
         break;
-      case 'skillsData':
+      case 'skillData':
         setSkillsData(pageSkillsData);
         // MISSING FLAG STUFF
         break;
@@ -259,6 +259,7 @@ function Main() {
         contactData={contactData}
         schoolsData={schoolsData}
         worksData={worksData}
+        skillsData={skillsData}
         addDuty={addDuty}
         updateDuty={updateDuty}
         deleteDuty={deleteDuty}
