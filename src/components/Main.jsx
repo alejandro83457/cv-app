@@ -20,10 +20,12 @@ function Main() {
   const [worksData, setWorksData] = useState({
     [uuidv4()]: { ...workDataObj, dutiesData: { [uuidv4()]: '' } },
   });
+  const [skillsData, setSkillsData] = useState({ [uuidv4()]: '' });
 
   const [pageContactData, setPageContactData] = useState(contactDataObj);
   const [pageSchoolsData, setPageSchoolsData] = useState({});
   const [pageWorksData, setPageWorksData] = useState({});
+  const [pageSkillsData, setPageSkillsData] = useState({});
 
   // state flag for empty inputs
   const [emptyContactFlag, setEmptyContactFlag] = useState(false);
@@ -48,6 +50,12 @@ function Main() {
           [key]: { ...worksData[key], [e.target.name]: e.target.value },
         });
         break;
+      case 'skillData':
+        setSkillsData({
+          ...skillsData,
+          [key]: e.target.value,
+        });
+        break;
       default:
         throw Error('Something went wrong when handling form data.');
     }
@@ -62,12 +70,22 @@ function Main() {
         ...worksData,
         [uuidv4()]: { ...workDataObj, dutiesData: { [uuidv4()]: '' } },
       });
+    } else if (category === 'skillData') {
+      setSkillsData({
+        ...skillsData,
+        [uuidv4()]: '',
+      });
     }
   }
 
   // deletes form based on key
   function handleDeleteForm(formKey, category = null) {
-    let data = category === 'schoolData' ? schoolsData : worksData;
+    let data;
+    if (category === 'schoolData') data = schoolsData;
+    else if (category === 'worksData') data = worksData;
+    else if (category === 'skillsData') data = skillsData;
+    // OLD
+    // let data = category === 'schoolData' ? schoolsData : worksData;
     // we need at least one form present
     if (Object.keys(data).length < 2) return;
     let temp = {};
@@ -77,6 +95,7 @@ function Main() {
     // update state
     if (category === 'schoolData') setSchoolsData(temp);
     else if (category === 'workData') setWorksData(temp);
+    else if (category === 'skillsData') setSkillsData(temp);
   }
 
   // adds a new duty
@@ -138,6 +157,10 @@ function Main() {
         setWorksData(pageWorksData);
         setEmptySchoolsFlag(false);
         break;
+      case 'skillsData':
+        setSkillsData(pageSkillsData);
+        // MISSING FLAG STUFF
+        break;
       default:
         throw Error('Something went wrong when editing form.');
     }
@@ -169,6 +192,11 @@ function Main() {
         setWorksData({
           [uuidv4()]: { ...workDataObj, dutiesData: { [uuidv4()]: '' } },
         });
+        break;
+      case 'skillData':
+        // MISSING: FlAG STUFF
+        setPageSkillsData({ ...skillsData });
+        setSkillsData({ [uuidv4()]: '' });
         break;
       default:
         throw Error('Something went wrong when adding info to page.');
