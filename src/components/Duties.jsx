@@ -30,7 +30,9 @@ function Duties({ addDuty, updateDuty, deleteDuty, workID, workData }) {
           updateDuty={updateDuty}
         />
       ))}
-      <input type="button" value="new duty" onClick={() => addDuty(workID)} />
+      <div>
+        <input type="button" value="new duty" onClick={() => addDuty(workID)} />
+      </div>
     </div>
   );
 }

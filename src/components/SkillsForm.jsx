@@ -1,4 +1,10 @@
-function Skill({ skillData, id, handleForm, handleDeleteForm }) {
+function Skill({
+  skillData,
+  id,
+  handleForm,
+  handleDeleteForm,
+  emptySkillsFlag,
+}) {
   return (
     <div className="skill">
       <input
@@ -12,6 +18,7 @@ function Skill({ skillData, id, handleForm, handleDeleteForm }) {
         value="delete"
         onClick={() => handleDeleteForm(id, 'skillData')}
       />
+      {emptySkillsFlag && skillData === '' && <div id="asterisk">*</div>}
     </div>
   );
 }
@@ -23,6 +30,7 @@ function SkillsForm({
   handleEditForm,
   handleSubmit,
   handleDeleteForm,
+  emptySkillsFlag,
 }) {
   return (
     <div id="skills-form">
@@ -34,6 +42,7 @@ function SkillsForm({
           skillData={value}
           handleForm={handleForm}
           handleDeleteForm={handleDeleteForm}
+          emptySkillsFlag={emptySkillsFlag}
         />
       ))}
       <div className="options">
@@ -53,7 +62,9 @@ function SkillsForm({
           onClick={(e) => handleSubmit(e, 'skillData')}
         />
       </div>
-      <div className="errorMessage">{/* {TODO} */}</div>
+      <div className="errorMessage">
+        {emptySkillsFlag && '* Fill out all fields'}
+      </div>
     </div>
   );
 }

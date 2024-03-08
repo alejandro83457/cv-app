@@ -31,6 +31,7 @@ function Main() {
   const [emptyContactFlag, setEmptyContactFlag] = useState(false);
   const [emptySchoolsFlag, setEmptySchoolsFlag] = useState(false);
   const [emptyWorksFlag, setEmptyWorksFlag] = useState(false);
+  const [emptySkillsFlag, setEmptySkillsFlag] = useState(false);
 
   // updates states; doesn't update page
   function handleForm(e, category, key = null) {
@@ -159,7 +160,7 @@ function Main() {
         break;
       case 'skillData':
         setSkillsData(pageSkillsData);
-        // MISSING FLAG STUFF
+        setEmptySkillsFlag(false);
         break;
       default:
         throw Error('Something went wrong when editing form.');
@@ -194,7 +195,8 @@ function Main() {
         });
         break;
       case 'skillData':
-        // MISSING: FlAG STUFF
+        // check if any input is empty
+        if (!checkForms(category)) return;
         setPageSkillsData({ ...skillsData });
         setSkillsData({ [uuidv4()]: '' });
         break;
@@ -247,6 +249,15 @@ function Main() {
         }
         setEmptyWorksFlag(false);
         return true;
+      case 'skillData':
+        for (let [key, skillData] of Object.entries(skillsData)) {
+          if (skillData === '') {
+            setEmptySkillsFlag(true);
+            return false;
+          }
+        }
+        setEmptySkillsFlag(false);
+        return true;
     }
   }
 
@@ -268,11 +279,13 @@ function Main() {
         emptyContactFlag={emptyContactFlag}
         emptySchoolsFlag={emptySchoolsFlag}
         emptyWorksFlag={emptyWorksFlag}
+        emptySkillsFlag={emptySkillsFlag}
       />
       <Page
         pageContactData={pageContactData}
         pageSchoolsData={pageSchoolsData}
         pageWorksData={pageWorksData}
+        pageSkillsData={pageSkillsData}
       />
     </main>
   );

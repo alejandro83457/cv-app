@@ -1,4 +1,9 @@
-function Page({ pageContactData, pageSchoolsData, pageWorksData }) {
+function Page({
+  pageContactData,
+  pageSchoolsData,
+  pageWorksData,
+  pageSkillsData,
+}) {
   return (
     <div id="page">
       <div id="contact-info-sec">
@@ -53,6 +58,15 @@ function Page({ pageContactData, pageSchoolsData, pageWorksData }) {
                 ))}
               </ul>
             </div>
+          ))}
+        </div>
+      </div>
+      <div id="skills-info-sec">
+        <h2>Skills</h2>
+        <hr />
+        <div id="skills-info">
+          {Object.entries(pageSkillsData).map(([key, value]) => (
+            <div key={key}>{value}</div>
           ))}
         </div>
       </div>
