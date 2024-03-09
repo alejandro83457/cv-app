@@ -13,8 +13,7 @@ function Works({
   emptyWorksFlag,
 }) {
   return (
-    <div id="works-form">
-      <h2 className="formHeading">Work info</h2>
+    <div>
       {Object.entries(worksData).map(([key, value]) => (
         <WorkForm
           key={key}

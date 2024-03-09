@@ -10,8 +10,7 @@ function Schools({
   emptySchoolsFlag,
 }) {
   return (
-    <div id="schools-form">
-      <h2 className="formHeading">School info</h2>
+    <div>
       {Object.entries(schoolsData).map(([key, value]) => (
         <SchoolForm
           key={key}
