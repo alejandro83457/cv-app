@@ -4,6 +4,28 @@ import { Works } from './Works';
 import { SkillsForm } from './SkillsForm';
 import { useState } from 'react';
 
+function TriangleUp() {
+  return (
+    <>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>menu-up</title>
+        <path d="M7,15L12,10L17,15H7Z" />
+      </svg>
+    </>
+  );
+}
+
+function TriangleDown() {
+  return (
+    <>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>menu-down</title>
+        <path d="M7,10L12,15L17,10H7Z" />
+      </svg>
+    </>
+  );
+}
+
 function Forms({
   handleForm,
   handleSubmit,
@@ -49,9 +71,16 @@ function Forms({
   return (
     <div id="forms">
       <div id="contact-form">
-        <h2 className="formHeading" onClick={() => handleToggle('contactForm')}>
-          Contact Info
-        </h2>
+        <div className="headingContainer">
+          <h2
+            className="formHeading"
+            onClick={() => handleToggle('contactForm')}
+          >
+            Contact Info
+          </h2>
+          {contactFormToggle ? <TriangleDown /> : <TriangleUp />}
+        </div>
+
         {contactFormToggle && (
           <ContactForm
             handleForm={handleForm}
@@ -64,9 +93,15 @@ function Forms({
       </div>
 
       <div id="schools-form">
-        <h2 className="formHeading" onClick={() => handleToggle('schoolsForm')}>
-          School info
-        </h2>
+        <div className="headingContainer">
+          <h2
+            className="formHeading"
+            onClick={() => handleToggle('schoolsForm')}
+          >
+            School info
+          </h2>
+          {schoolsFormToggle ? <TriangleDown /> : <TriangleUp />}
+        </div>
         {schoolsFormToggle && (
           <Schools
             handleForm={handleForm}
@@ -81,9 +116,13 @@ function Forms({
       </div>
 
       <div id="works-form">
-        <h2 className="formHeading" onClick={() => handleToggle('worksForm')}>
-          Work info
-        </h2>
+        <div className="headingContainer">
+          <h2 className="formHeading" onClick={() => handleToggle('worksForm')}>
+            Work info
+          </h2>
+          {worksFormToggle ? <TriangleDown /> : <TriangleUp />}
+        </div>
+
         {worksFormToggle && (
           <Works
             worksData={worksData}
@@ -101,9 +140,16 @@ function Forms({
       </div>
 
       <div id="skills-form">
-        <h2 className="formHeading" onClick={() => handleToggle('skillsForm')}>
-          Skills info
-        </h2>
+        <div className="headingContainer">
+          <h2
+            className="formHeading"
+            onClick={() => handleToggle('skillsForm')}
+          >
+            Skills info
+          </h2>
+          {skillsFormToggle ? <TriangleDown /> : <TriangleUp />}
+        </div>
+
         {skillsFormToggle && (
           <SkillsForm
             skillsData={skillsData}
