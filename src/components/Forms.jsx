@@ -55,15 +55,27 @@ function Forms({
     switch (category) {
       case 'contactForm':
         setContactFormToggle(!contactFormToggle);
+        setSchoolsFormToggle(false);
+        setWorksFormToggle(false);
+        setSkillsFormToggle(false);
         break;
       case 'schoolsForm':
         setSchoolsFormToggle(!schoolsFormToggle);
+        setContactFormToggle(false);
+        setWorksFormToggle(false);
+        setSkillsFormToggle(false);
         break;
       case 'worksForm':
         setWorksFormToggle(!worksFormToggle);
+        setContactFormToggle(false);
+        setSchoolsFormToggle(false);
+        setSkillsFormToggle(false);
         break;
       case 'skillsForm':
         setSkillsFormToggle(!skillsFormToggle);
+        setContactFormToggle(false);
+        setSchoolsFormToggle(false);
+        setWorksFormToggle(false);
         break;
     }
   }
