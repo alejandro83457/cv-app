@@ -3,9 +3,10 @@ function Page({
   pageSchoolsData,
   pageWorksData,
   pageSkillsData,
+  lightTheme,
 }) {
   return (
-    <div id="page">
+    <div id="page" className={lightTheme ? '' : 'dark-page'}>
       <div id="contact-info-sec">
         <h2>{pageContactData.name}</h2>
         <div>

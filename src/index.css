@@ -5,8 +5,8 @@
 body {
   margin: 0;
   height: 100dvh;
+
   background-color: whitesmoke;
-  color: rgb(33, 33, 33);
 }
 
 #root {
@@ -17,9 +17,42 @@ body {
   justify-content: space-between;
 }
 
+.dark-background {
+  background-color: rgb(64, 64, 64);
+  color: whitesmoke !important;
+  fill: whitesmoke;
+}
+
+.dark-form {
+  background-color: rgb(73, 73, 73) !important;
+}
+
+.dark-page {
+  background-color: rgb(73, 73, 73) !important;
+}
+
+.dark-link {
+  color: whitesmoke !important;
+}
+
+.dark-hover:hover {
+  background-color: rgb(64, 64, 64) !important;
+}
+
 header {
   display: flex;
   justify-content: center;
+  width: 100%;
+}
+
+.theme-svg {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 40px;
+}
+.theme-svg:hover {
+  cursor: pointer;
 }
 
 main {
@@ -51,10 +84,7 @@ main {
   border-radius: 20px;
 }
 
-#contact-form,
-#schools-form,
-#works-form,
-#skills-form {
+.info-form {
   background-color: white;
   padding: 1rem;
   display: flex;
@@ -160,7 +190,7 @@ form {
   align-items: center;
 }
 
-svg {
+#menu-svg {
   height: 30px;
 }
 

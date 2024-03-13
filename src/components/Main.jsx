@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Forms } from './Forms';
 import { Page } from './Page';
 
-function Main() {
+function Main({ lightTheme }) {
   let contactDataObj = { name: '', phone: '', email: '' };
   let schoolDataObj = { school: '', degree: '', graduationDate: '' };
   let workDataObj = {
@@ -280,12 +280,14 @@ function Main() {
         emptySchoolsFlag={emptySchoolsFlag}
         emptyWorksFlag={emptyWorksFlag}
         emptySkillsFlag={emptySkillsFlag}
+        lightTheme={lightTheme}
       />
       <Page
         pageContactData={pageContactData}
         pageSchoolsData={pageSchoolsData}
         pageWorksData={pageWorksData}
         pageSkillsData={pageSkillsData}
+        lightTheme={lightTheme}
       />
     </main>
   );
