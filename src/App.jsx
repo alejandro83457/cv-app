@@ -5,11 +5,11 @@ import { Header } from './components/Header';
 import { Main } from './components/Main';
 
 function toggleBackground(lightTheme) {
-  let root = document.querySelector('#root');
+  let body = document.querySelector('body');
   if (lightTheme) {
-    root.removeAttribute('class', 'dark-background');
+    body.removeAttribute('class', 'dark-background');
   } else {
-    root.setAttribute('class', 'dark-background');
+    body.setAttribute('class', 'dark-background');
   }
 }
 
