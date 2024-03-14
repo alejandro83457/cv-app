@@ -11,6 +11,7 @@ function Works({
   updateDuty,
   deleteDuty,
   emptyWorksFlag,
+  lightTheme,
 }) {
   return (
     <>
@@ -26,22 +27,26 @@ function Works({
             updateDuty={updateDuty}
             deleteDuty={deleteDuty}
             emptyWorksFlag={emptyWorksFlag}
+            lightTheme={lightTheme}
           />
         ))}
         <div className="options">
           <input
             type="button"
             value="new"
+            className={!lightTheme && 'dark-input'}
             onClick={() => handleNewForm('workData')}
           />
           <input
             type="button"
             value="edit"
+            className={!lightTheme && 'dark-input'}
             onClick={() => handleEditForm('workData')}
           />
           <input
             type="button"
             value="add"
+            className={!lightTheme && 'dark-input'}
             onClick={(e) => handleSubmit(e, 'workData')}
           />
         </div>

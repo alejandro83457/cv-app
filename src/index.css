@@ -189,6 +189,15 @@ form {
 
 input {
   width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+}
+
+.dark-input {
+  background-color: rgb(94, 94, 94);
+  color: whitesmoke;
+  border: none;
+  border-radius: 3px;
 }
 
 label {

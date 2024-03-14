@@ -4,6 +4,7 @@ function SchoolForm({
   id,
   handleDeleteForm,
   emptySchoolsFlag,
+  lightTheme,
 }) {
   return (
     <form id="school-form">
@@ -13,6 +14,7 @@ function SchoolForm({
           type="text"
           name="school"
           id="school"
+          className={!lightTheme && 'dark-input'}
           value={schoolData.school}
           onChange={(e) => handleForm(e, 'schoolData', id)}
         />
@@ -26,6 +28,7 @@ function SchoolForm({
           type="text"
           name="degree"
           id="degree"
+          className={!lightTheme && 'dark-input'}
           value={schoolData.degree}
           onChange={(e) => handleForm(e, 'schoolData', id)}
         />
@@ -39,6 +42,7 @@ function SchoolForm({
           type="date"
           name="graduationDate"
           id="graduation-date"
+          className={!lightTheme && 'dark-input'}
           value={schoolData.graduationDate}
           onChange={(e) => handleForm(e, 'schoolData', id)}
         />
@@ -49,6 +53,7 @@ function SchoolForm({
       <input
         type="button"
         value="delete school"
+        className={!lightTheme && 'dark-input'}
         onClick={() => handleDeleteForm(id, 'schoolData')}
       />
     </form>

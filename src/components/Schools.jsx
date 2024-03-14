@@ -8,6 +8,7 @@ function Schools({
   handleNewForm,
   handleDeleteForm,
   emptySchoolsFlag,
+  lightTheme,
 }) {
   return (
     <>
@@ -20,22 +21,26 @@ function Schools({
             schoolData={value}
             handleDeleteForm={handleDeleteForm}
             emptySchoolsFlag={emptySchoolsFlag}
+            lightTheme={lightTheme}
           />
         ))}
         <div className="options">
           <input
             type="button"
             value="new"
+            className={!lightTheme && 'dark-input'}
             onClick={() => handleNewForm('schoolData')}
           />
           <input
             type="button"
             value="edit"
+            className={!lightTheme && 'dark-input'}
             onClick={() => handleEditForm('schoolData')}
           />
           <input
             type="button"
             value="add"
+            className={!lightTheme && 'dark-input'}
             onClick={(e) => handleSubmit(e, 'schoolData')}
           />
         </div>

@@ -10,6 +10,7 @@ function WorkForm({
   deleteDuty,
   id,
   emptyWorksFlag,
+  lightTheme,
 }) {
   return (
     <form
@@ -24,6 +25,7 @@ function WorkForm({
           type="text"
           name="companyName"
           id="companyName"
+          className={!lightTheme && 'dark-input'}
           value={workData.companyName}
           onChange={(e) => handleForm(e, 'workData', id)}
         />
@@ -37,6 +39,7 @@ function WorkForm({
           type="text"
           name="positionTitle"
           id="positionTitle"
+          className={!lightTheme && 'dark-input'}
           value={workData.positionTitle}
           onChange={(e) => handleForm(e, 'workData', id)}
         />
@@ -50,6 +53,7 @@ function WorkForm({
           type="date"
           name="dateHired"
           id="dateHired"
+          className={!lightTheme && 'dark-input'}
           value={workData.dateHired}
           onChange={(e) => handleForm(e, 'workData', id)}
         />
@@ -63,6 +67,7 @@ function WorkForm({
           type="date"
           name="dateLeft"
           id="dateLeft"
+          className={!lightTheme && 'dark-input'}
           value={workData.dateLeft}
           onChange={(e) => handleForm(e, 'workData', id)}
         />
@@ -76,10 +81,12 @@ function WorkForm({
         updateDuty={updateDuty}
         deleteDuty={deleteDuty}
         workData={workData}
+        lightTheme={lightTheme}
       />
       <input
         type="button"
         value="delete work"
+        className={!lightTheme && 'dark-input'}
         onClick={() => handleDeleteForm(id, 'workData')}
       />
     </form>

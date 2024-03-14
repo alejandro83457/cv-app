@@ -4,6 +4,7 @@ function ContactForm({
   handleEditForm,
   contactData,
   emptyContactFlag,
+  lightTheme,
 }) {
   return (
     <form
@@ -18,6 +19,7 @@ function ContactForm({
           type="text"
           name="name"
           id="name"
+          className={!lightTheme && 'dark-input'}
           value={contactData.name}
           onChange={(e) => handleForm(e, 'contactData')}
         />
@@ -31,6 +33,7 @@ function ContactForm({
           type="tel"
           name="phone"
           id="phone"
+          className={!lightTheme && 'dark-input'}
           value={contactData.phone}
           onChange={(e) => handleForm(e, 'contactData')}
         />
@@ -44,6 +47,7 @@ function ContactForm({
           type="email"
           name="email"
           id="email"
+          className={!lightTheme && 'dark-input'}
           value={contactData.email}
           onChange={(e) => handleForm(e, 'contactData')}
         />
@@ -54,10 +58,15 @@ function ContactForm({
       <div className="options">
         <input
           type="button"
+          className={!lightTheme && 'dark-input'}
           value="edit"
           onClick={() => handleEditForm('contactData')}
         />
-        <input type="submit" value="add" />
+        <input
+          type="submit"
+          value="add"
+          className={!lightTheme && 'dark-input'}
+        />
       </div>
       <div className="errorMessage">
         {emptyContactFlag && '* Fill out all fields'}

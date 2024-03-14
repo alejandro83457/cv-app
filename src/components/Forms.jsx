@@ -108,6 +108,7 @@ function Forms({
             handleEditForm={handleEditForm}
             contactData={contactData}
             emptyContactFlag={emptyContactFlag}
+            lightTheme={lightTheme}
           />
         )}
       </div>
@@ -138,6 +139,7 @@ function Forms({
             handleNewForm={handleNewForm}
             handleDeleteForm={handleDeleteForm}
             emptySchoolsFlag={emptySchoolsFlag}
+            lightTheme={lightTheme}
           />
         )}
       </div>
@@ -169,6 +171,7 @@ function Forms({
             updateDuty={updateDuty}
             deleteDuty={deleteDuty}
             emptyWorksFlag={emptyWorksFlag}
+            lightTheme={lightTheme}
           />
         )}
       </div>
@@ -200,6 +203,7 @@ function Forms({
             handleNewForm={handleNewForm}
             handleDeleteForm={handleDeleteForm}
             emptySkillsFlag={emptySkillsFlag}
+            lightTheme={lightTheme}
           />
         )}
       </div>
