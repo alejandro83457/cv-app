@@ -33,7 +33,7 @@ function SkillsForm({
   emptySkillsFlag,
 }) {
   return (
-    <div>
+    <div className="inner-form">
       {Object.entries(skillsData).map(([key, value]) => (
         <Skill
           key={key}

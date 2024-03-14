@@ -7,6 +7,7 @@ function ContactForm({
 }) {
   return (
     <form
+      className="inner-form"
       onSubmit={(e) => {
         handleSubmit(e, 'contactData');
       }}

@@ -91,6 +91,11 @@ main {
   flex-direction: column;
   gap: 0.5rem;
   border-radius: 20px;
+  align-items: center;
+}
+
+.inner-form {
+  width: 80%;
 }
 
 #contact-info-sec > h2 {
@@ -138,9 +143,11 @@ main {
   text-align: right;
 }
 
-.skill {
-  display: flex;
-  gap: 0.25rem;
+.skill,
+.duty {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1rem;
 }
 
 #skills,
@@ -171,6 +178,14 @@ form {
   gap: 0.25rem;
 }
 
+input {
+  width: 100%;
+}
+
+label {
+  text-wrap: nowrap;
+}
+
 #asterisk {
   color: darkred;
 }
@@ -187,7 +202,7 @@ form {
 
 .headingContainer {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 #menu-svg {
@@ -201,7 +216,6 @@ form {
 }
 
 .headingContainer:hover {
-  width: fit-content;
   background-color: whitesmoke;
   border-radius: 10px;
   cursor: pointer;
