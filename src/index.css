@@ -191,6 +191,7 @@ input {
   width: 100%;
   border: 1px solid lightgray;
   border-radius: 3px;
+  height: 20px;
 }
 
 .dark-input {
