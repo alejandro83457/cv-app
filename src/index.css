@@ -143,11 +143,20 @@ main {
   text-align: right;
 }
 
-.skill,
-.duty {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 1rem;
+.duty,
+.skill {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skill > input:first-child,
+.duty > input:first-child {
+  flex: 1;
+}
+
+.skill > input:nth-child(2),
+.duty > input:nth-child(2) {
+  flex: 0;
 }
 
 #skills,
@@ -187,12 +196,12 @@ label {
 }
 
 #asterisk {
-  color: darkred;
+  color: rgb(191, 75, 75);
 }
 
 .errorMessage {
   height: 8px;
-  color: darkred;
+  color: rgb(191, 75, 75);
 }
 
 .options {
@@ -253,6 +262,10 @@ a:hover {
   }
   #page {
     min-height: 850px;
+  }
+
+  .inner-form {
+    width: 70%;
   }
 }
 

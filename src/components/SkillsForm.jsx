@@ -6,7 +6,11 @@ function Skill({
   emptySkillsFlag,
 }) {
   return (
-    <div className="skill">
+    <div
+      className={
+        emptySkillsFlag && skillData === '' ? 'skill skill-error' : 'skill'
+      }
+    >
       <input
         type="text"
         name="skill"
