@@ -5,6 +5,25 @@ function Page({
   pageSkillsData,
   lightTheme,
 }) {
+  function parseDate(date) {
+    date = date.split('-');
+    let months = {
+      '01': 'Jan',
+      '02': 'Feb',
+      '03': 'Mar',
+      '04': 'Apr',
+      '05': 'May',
+      '06': 'June',
+      '07': 'July',
+      '08': 'Aug',
+      '09': 'Sep',
+      10: 'Oct',
+      11: 'Nov',
+      12: 'Dec',
+    };
+    return `${months[date[1]]} ${date[0]}`;
+  }
+
   return (
     <div id="page" className={lightTheme ? '' : 'dark-page'}>
       <div id="contact-info-sec">
@@ -24,7 +43,7 @@ function Page({
                 <b>{pageSchoolData.school}</b>
               </div>
               <div className="graduation-date">
-                {pageSchoolData.graduationDate}
+                {parseDate(pageSchoolData.graduationDate)}
               </div>
               <div className="degree">
                 <i>{pageSchoolData.degree}</i>
@@ -45,7 +64,8 @@ function Page({
                 </div>
                 <div id="work-time">
                   <div>
-                    {pageWorkData.dateHired} - {pageWorkData.dateLeft}
+                    {parseDate(pageWorkData.dateHired)} -{' '}
+                    {parseDate(pageWorkData.dateLeft)}
                   </div>
                 </div>
                 <div id="position">
