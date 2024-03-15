@@ -9,7 +9,7 @@ function Page({
     <div id="page" className={lightTheme ? '' : 'dark-page'}>
       <div id="contact-info-sec">
         <h2>{pageContactData.name}</h2>
-        <div>
+        <div className="phone-email-div">
           <div id="phone">{pageContactData.phone}</div>
           <div id="email">{pageContactData.email}</div>
         </div>

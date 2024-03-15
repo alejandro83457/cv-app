@@ -108,6 +108,7 @@ main {
 #contact-info-sec > div {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -280,7 +281,7 @@ a:hover {
 
 @media (max-width: 650px) {
   main {
-    width: 400px;
+    width: 350px;
   }
   #page {
     min-height: 600px;

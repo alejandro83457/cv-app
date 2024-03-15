@@ -7,12 +7,7 @@ function ContactForm({
   lightTheme,
 }) {
   return (
-    <form
-      className="inner-form"
-      onSubmit={(e) => {
-        handleSubmit(e, 'contactData');
-      }}
-    >
+    <form id="contact-form">
       <div className="inputDiv">
         <label htmlFor="name">Name:</label>
         <input
@@ -63,9 +58,12 @@ function ContactForm({
           onClick={() => handleEditForm('contactData')}
         />
         <input
-          type="submit"
+          type="button"
           value="add"
           className={!lightTheme && 'dark-input'}
+          onClick={(e) => {
+            handleSubmit(e, 'contactData');
+          }}
         />
       </div>
       <div className="errorMessage">
